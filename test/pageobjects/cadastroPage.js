@@ -1,5 +1,6 @@
 import { $ } from '@wdio/globals'
 import Page from './page.js';
+import { fecharAnuncios } from '../helpers/userData.js'
 
 /** Page Object das páginas de cadastro.
  * Cobre a tela de inserção de nome/email e o formulário completo de criação de conta.*/
@@ -74,6 +75,7 @@ class CadastroPage extends Page {
 
     //Preenche formulario inicial de criação
     async preencherFormularioSignup(nome, email) {
+        await fecharAnuncios()
         await this.campoNome.setValue(nome)
         await this.campoEmail.setValue(email)
         await this.botaoSignup.click()
@@ -82,6 +84,7 @@ class CadastroPage extends Page {
 
     //Preenche formulario completo de criação de conta
     async preencherFormularioCriarConta(dados) {
+        await fecharAnuncios()
         await this.tituloMrs.click()
         await this.campoSenha.setValue(dados.senha)
         await this.selectDia.selectByIndex(10)

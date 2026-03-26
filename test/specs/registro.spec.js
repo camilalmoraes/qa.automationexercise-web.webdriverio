@@ -12,24 +12,18 @@ describe('Registro de Usuário', () => {
 
         //Act
         await homePage.open()
-        await fecharAnuncios()
         await homePage.clickSignupLogin()
 
-        await fecharAnuncios()
         await cadastroPage.preencherFormularioSignup(dados.nome, dados.email)
 
-        await fecharAnuncios()
         await cadastroPage.preencherFormularioCriarConta(dados)
 
-        await fecharAnuncios()
         await accountPage.clicarContinue()
 
-        await fecharAnuncios()
         await accountPage.deletarConta()
 
         //Asserts
         await expect(accountPage.textoContaDeletada).toBeDisplayed()
-        await fecharAnuncios()
         await expect(accountPage.botaoContinue).toBeDisplayed()
     })
 })
